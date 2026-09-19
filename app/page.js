@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import animationData from "../public/email-marketing.json";
+import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -238,65 +241,72 @@ export default function Home() {
 
       {/* about us  */}
       <section className="bg-gray-50 py-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        {/* Left Side: Content */}
-        <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 font-medium px-4 py-1.5 rounded-full text-sm tracking-wide uppercase">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            Who We Are
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            We Drive Big Results For <span className="text-blue-600"> Growing Brands</span> Online.
-          </h2>
-          
-          <p className="text-gray-600 text-lg leading-relaxed">
-            We are a full-service digital marketing agency that connects brands with consumers. 
-            Through creative strategies, data-driven SEO, powerful social media campaigns, 
-            and cutting-edge web development, we turn clicks into loyal customers.
-          </p>
-
-          {/* Stats / Features Strip */}
-          <div className="grid grid-cols-2 gap-6 pt-4">
-            <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
-              <h3 className="text-3xl font-bold text-blue-600">150%+</h3>
-              <p className="text-sm font-medium text-gray-500 mt-1">Average ROI Increase</p>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side: Content */}
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 font-medium px-4 py-1.5 rounded-full text-sm tracking-wide uppercase">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+              Who We Are
             </div>
-            <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
-              <h3 className="text-3xl font-bold text-blue-600">98%</h3>
-              <p className="text-sm font-medium text-gray-500 mt-1">Client Retention Rate</p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              We Drive Big Results For{" "}
+              <span className="text-blue-600"> Growing Brands</span> Online.
+            </h2>
+
+            <p className="text-gray-600 text-lg leading-relaxed">
+              We are a full-service digital marketing agency that connects
+              brands with consumers. Through creative strategies, data-driven
+              SEO, powerful social media campaigns, and cutting-edge web
+              development, we turn clicks into loyal customers.
+            </p>
+
+            {/* Stats / Features Strip */}
+            <div className="grid grid-cols-2 gap-6 pt-4">
+              <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
+                <h3 className="text-3xl font-bold text-blue-600">150%+</h3>
+                <p className="text-sm font-medium text-gray-500 mt-1">
+                  Average ROI Increase
+                </p>
+              </div>
+              <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
+                <h3 className="text-3xl font-bold text-blue-600">98%</h3>
+                <p className="text-sm font-medium text-gray-500 mt-1">
+                  Client Retention Rate
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="pt-4">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+                Discover Our Strategy
+              </button>
             </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="pt-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
-              Discover Our Strategy
-            </button>
-          </div>
-        </div>
+          {/* Right Side: Creative GIF Animation */}
+          <div className="relative flex justify-center items-center lg:justify-end">
+            {/* Subtle background decorative shapes for depth */}
+            <div className="absolute top-10 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+            <div className="absolute bottom-10 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
 
-        {/* Right Side: Creative GIF Animation */}
-        <div className="relative flex justify-center items-center lg:justify-end">
-          {/* Subtle background decorative shapes for depth */}
-          <div className="absolute top-10 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-          <div className="absolute bottom-10 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-          
-          <div className="relative w-full max-w-[500px] aspect-square rounded-2xl bg-white/40 p-4 backdrop-blur-sm border border-white/40 shadow-xl overflow-hidden group">
-            <Image
+            {/* <div className="relative w-full max-w-[500px] aspect-square rounded-2xl bg-white/40 p-4 backdrop-blur-sm border border-white/40 shadow-xl overflow-hidden group"> */}
+              {/* <Image
               src="/logos/marketing-animate.gif" // 👈 अपनी GIF फ़ाइल का नाम यहाँ लिखें
               alt="Digital Marketing Agency Illustration"
               fill
               unoptimized // 👈 GIFs को एनिमेटेड रखने के लिए Next.js में यह ज़रूरी है
               className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-            />
+            /> */}
+              {/* एनीमेशन कंटेनर */}
+              <div style={{ width: "500px", height: "500px", margin: "0 auto" }} >
+                <DotLottiePlayer autoplay loop src={animationData} />
+              </div>
+            {/* </div> */}
           </div>
         </div>
-
-      </div>
-    </section>
-
+      </section>
 
       {/* carousel logo  */}
       <section className="bg-white py-16 px-4 overflow-hidden">
@@ -385,9 +395,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-xs text-slate-500">Call us at</p>
-                  <p className="text-sm font-semibold">
-                    1234567890
-                  </p>
+                  <p className="text-sm font-semibold">1234567890</p>
                 </div>
               </div>
 
